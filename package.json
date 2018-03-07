@@ -1,6 +1,6 @@
 {
   "name": "tsgoose",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "TypeScript decorators for Mongoose",
   "main": "index.js",
   "directories": {
@@ -35,11 +35,11 @@
     "@types/node": "^9.4.6",
     "rimraf": "^2.6.2",
     "tslint": "^5.9.1",
-    "typescript": "^2.7.2"
-  },
-  "dependencies": {
-    "reflect-metadata": "^0.1.12",
+    "typescript": "^2.7.2",
     "@types/mongoose": "^5.0.6",
     "mongoose": "^5.0.9"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.1.12"
   }
 }

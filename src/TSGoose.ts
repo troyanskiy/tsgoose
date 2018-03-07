@@ -4,11 +4,11 @@ import {
   virtuals
 } from './data';
 import * as mongoose from 'mongoose';
-import { ITSGooseHookLikeEntry, ITSGooseVirtualEntry, TSGooseDocument } from './declarations';
+import {ITSGooseHookLikeEntry, ITSGooseVirtualEntry, TSGooseModel} from './declarations';
 
 export class TSGoose {
 
-  static getTSGooseModel<T>(): mongoose.Model<TSGooseDocument<T>> {
+  static getTSGooseModel<T>(): TSGooseModel<T> {
     return getTSGooseModel<T>(this);
   }
 
@@ -79,7 +79,7 @@ export function getTSGooseSchema(t: any): mongoose.Schema {
 
 }
 
-export function getTSGooseModel<T>(t: any): mongoose.Model<TSGooseDocument<T>> {
+export function getTSGooseModel<T>(t: any): TSGooseModel<T> {
 
   const name = t.name;
 
