@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "types": ["node"],
+    "lib": ["es2015", "dom"],
+    "outDir": "dist"
+  },
+  "files": [
+    "index.ts",
+    "tsgoose.ts",
+    "src/declarations.ts",
+    "src/data.ts",
+    "src/TSGoose.ts",
+    "src/TSGooseHook.ts",
+    "src/TSGooseMethod.ts",
+    "src/TSGooseProp.ts",
+    "src/TSGooseQueryHelper.ts",
+    "src/TSGooseSchemaOptions.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "bundles"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true
+  }
+}
