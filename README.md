@@ -20,6 +20,7 @@ import {
   TSGooseSchemaOptions
 } from 'tsgoose';
 
+// Model/Schema for UserComment subdocument
 export class UserComment extends TSGoose {
 
   // Define Date property
@@ -34,6 +35,7 @@ export class UserComment extends TSGoose {
 
 }
 
+// Model/Schema for Group
 export class Group extends TSGoose {
 
   // Define String property
@@ -48,11 +50,13 @@ export class Group extends TSGoose {
 
 }
 
+// Just an interface will be treated as Mixed type
 export interface IExtraInfo {
   bestFriendName: string;
 }
 
 
+// Model/Schema of User
 @TSGooseSchemaOptions({ /* here you can provide options which will be applied for the Schema */})
 export class User extends TSGoose {
 
