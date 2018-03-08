@@ -1,19 +1,24 @@
 import 'reflect-metadata';
 import {
-  methods, models, postHooks, preHooks, queryHelpers, schemaOptions, schemas, schemasInstances, statics,
+  methods,
+  models,
+  postHooks,
+  preHooks,
+  queryHelpers,
+  schemaOptions,
+  schemas,
+  schemasInstances,
+  statics,
   virtuals
 } from './data';
 import * as mongoose from 'mongoose';
-import {ITSGooseHookLikeEntry, ITSGooseVirtualEntry, TSGooseModel} from './declarations';
+import { ITSGooseHookLikeEntry, ITSGooseVirtualEntry, TSGooseModel } from './declarations';
 
 export class TSGoose {
 
   static getTSGooseModel<T>(): TSGooseModel<T> {
     return getTSGooseModel<T>(this);
   }
-
-
-
 
 }
 

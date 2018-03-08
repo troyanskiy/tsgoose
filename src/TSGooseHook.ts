@@ -4,7 +4,7 @@ import { ITSGooseHookOptions, TSGooseHookType } from './declarations';
 
 export function TSGooseHook(options: ITSGooseHookOptions) {
 
-  return function(target: any, propertyKey: string) {
+  return function (target: any, propertyKey: string) {
 
     const name = target.constructor.name;
 

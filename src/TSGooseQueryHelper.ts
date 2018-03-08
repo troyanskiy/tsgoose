@@ -2,7 +2,7 @@ import { queryHelpers } from './data';
 
 export function TSGooseQueryHelper(options: ITSGooseQueryHelperOptions = {}) {
 
-  return function(target: any, propertyKey: string) {
+  return function (target: any, propertyKey: string) {
 
     const name = target.constructor.name;
 

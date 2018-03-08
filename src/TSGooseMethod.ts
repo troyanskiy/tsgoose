@@ -3,7 +3,7 @@ import { methods, statics } from './data';
 
 export function TSGooseMethod(options: ITSGooseMethodOptions = {}) {
 
-  return function(target: any, propertyKey: string) {
+  return function (target: any, propertyKey: string) {
 
     const name = target.constructor.name;
 
