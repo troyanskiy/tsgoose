@@ -1,6 +1,6 @@
 {
   "name": "tsgoose",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "TypeScript decorators for Mongoose",
   "main": "index.js",
   "directories": {

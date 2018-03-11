@@ -61,7 +61,11 @@ export function TSGooseProp(options: ITSGoosePropOptions = {}) {
       type = options.arrayType;
     }
 
-    // console.log('Name', name);
+    if (options.enum) {
+
+      options.enum = Object.keys(options.enum).map((key: string) => options.enum[key]);
+      type = String;
+    }
 
     schemas[name] = schemas[name] || {};
     const schema = schemas[name];
@@ -76,7 +80,7 @@ export function TSGooseProp(options: ITSGoosePropOptions = {}) {
 
       const extraOptions = {...options};
       delete extraOptions.arrayType;
-      delete extraOptions.asRef;
+      delete extraOptions.ref;
 
       Object.assign(mongooseDef, extraOptions);
 
@@ -86,7 +90,7 @@ export function TSGooseProp(options: ITSGoosePropOptions = {}) {
 
         getTSGooseModel(type);
 
-        if (options.asRef) {
+        if (options.ref) {
           mongooseDef.type = ObjectId;
           mongooseDef.ref = type.name;
         } else {

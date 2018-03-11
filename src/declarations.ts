@@ -5,10 +5,10 @@ export type RequiredType = boolean | [boolean, string] | string | Func | [Func, 
 
 export interface ITSGoosePropOptions {
   arrayType?: any;
-  asRef?: any;
+  ref?: any;
+  enum?: any;
 
   required?: RequiredType;
-  enum?: string[] | object;
   default?: any;
   unique?: boolean;
   index?: boolean;
