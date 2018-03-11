@@ -20,23 +20,29 @@ import {
   TSGooseSchemaOptions
 } from 'tsgoose';
 
+// Model/Schema for UserComment subdocument
 export class UserComment extends TSGoose {
 
+  // Define Date property
   @TSGooseProp({
     default: Date.now
   })
   date?: Date;
 
+  // Define String property
   @TSGooseProp()
   message: string;
 
 }
 
+// Model/Schema for Group
 export class Group extends TSGoose {
 
+  // Define String property
   @TSGooseProp()
   title: string;
 
+  // Define String array property [String]
   @TSGooseProp({
     arrayType: String
   })
@@ -44,14 +50,17 @@ export class Group extends TSGoose {
 
 }
 
+// Just an interface will be treated as Mixed type
 export interface IExtraInfo {
   bestFriendName: string;
 }
 
 
-@TSGooseSchemaOptions({})
+// Model/Schema of User
+@TSGooseSchemaOptions({ /* here you can provide options which will be applied for the Schema */})
 export class User extends TSGoose {
 
+  // Difine String property with unique flag
   @TSGooseProp({
     unique: true
   })
@@ -71,31 +80,39 @@ export class User extends TSGoose {
   })
   loginCount: number;
 
+  // This is virtual http://mongoosejs.com/docs/guide.html#virtuals
   @TSGooseProp()
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
 
+  // This will create ref property http://mongoosejs.com/docs/populate.html
+  // like `group: {type: ObjectId, ref: 'Group'}`
   @TSGooseProp({
     asRef: true
   })
   group: Group;
 
+  // Will create subdocument array property http://mongoosejs.com/docs/subdocs.html
+  // like `comments: [UserCommentSchema]
   @TSGooseProp({
     arrayType: UserComment
   })
   comments: UserComment[];
 
+  // Just mixed type
   @TSGooseProp()
   extraInfo: IExtraInfo;
 
 
-
+  // Static method http://mongoosejs.com/docs/guide.html#statics
+  // I had to put that as instance method property, because if you have it as static the autocompletion in WebStrom does not see it
   @TSGooseMethod({isStatic: true})
   method() {
     console.log('static');
   }
 
+  // Instance method http://mongoosejs.com/docs/guide.html#methods
   @TSGooseMethod()
   matchPassword(candidatePassword: string): Promise<boolean> {
     return new Promise((resolve) => {
@@ -110,11 +127,13 @@ export class User extends TSGoose {
   }
 
 
-  @TSGooseHook({
+  // A hook
+  // http://mongoosejs.com/docs/api.html#schema_Schema-pre
+  // http://mongoosejs.com/docs/api.html#schema_Schema-post
+  @TSGooseHook({
     type: TSGooseHookType.Pre,
     name: 'save'
   })
-  //tslint:disable-next-line
   private preSave(next) {
     const user: UserDocument = this as any;
 
@@ -138,6 +157,8 @@ export class User extends TSGoose {
     });
   }
 
+  // A query helper
+  // http://mongoosejs.com/docs/guide.html#query-helpers
   @TSGooseQueryHelper({name: 'byEmail'})
   private queryHelperFindByEmail(email: string) {
     const query: UserDocumentQuery = this as any;
